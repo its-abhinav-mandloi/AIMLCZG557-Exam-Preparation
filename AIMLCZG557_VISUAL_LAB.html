@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIMLCZG557 Visual Lab</title>
+  <style>
+    :root {
+      --bg: #f4efe4;
+      --panel: #fffaf1;
+      --ink: #1f2a2c;
+      --muted: #5f6d6f;
+      --accent: #0f766e;
+      --accent-2: #b45309;
+      --line: #d8cdb8;
+      --good: #206a5d;
+      --warn: #9a3412;
+      --shadow: 0 20px 50px rgba(31, 42, 44, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top right, rgba(180, 83, 9, 0.14), transparent 28%),
+        radial-gradient(circle at left center, rgba(15, 118, 110, 0.12), transparent 30%),
+        linear-gradient(180deg, #f7f2e8 0%, var(--bg) 100%);
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, rgba(15, 118, 110, 0.96), rgba(31, 42, 44, 0.96));
+      color: #fefbf5;
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -60px;
+      top: -60px;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(255,255,255,0.18), transparent 70%);
+    }
+
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 4vw, 3.3rem);
+      line-height: 1.05;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 0;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid rgba(216, 205, 184, 0.85);
+      border-radius: 22px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    h2, h3 {
+      margin-top: 0;
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 24px 0 18px;
+    }
+
+    .tab {
+      border: none;
+      border-radius: 999px;
+      padding: 12px 16px;
+      font: inherit;
+      background: rgba(15, 118, 110, 0.1);
+      color: var(--ink);
+      cursor: pointer;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .tab.active {
+      background: var(--accent);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    .panel {
+      display: none;
+    }
+
+    .panel.active {
+      display: block;
+      animation: fade 220ms ease;
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: grid;
+      gap: 6px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    input, select, button, textarea {
+      font: inherit;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      background: #fffdf8;
+      color: var(--ink);
+    }
+
+    button.action {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .subtle {
+      background: transparent;
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .metric {
+      padding: 12px;
+      border-radius: 16px;
+      background: rgba(15, 118, 110, 0.08);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.15rem;
+      margin-bottom: 4px;
+    }
+
+    .output, .table-wrap {
+      margin-top: 16px;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: rgba(180, 83, 9, 0.08);
+    }
+
+    .tree {
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .tree-level {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .node {
+      min-width: 96px;
+      padding: 10px 12px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .node.pruned {
+      opacity: 0.45;
+      background: #f3e1d3;
+      text-decoration: line-through;
+    }
+
+    .recall {
+      margin-top: 18px;
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(180, 83, 9, 0.08);
+    }
+
+    .recall p:last-child,
+    .tip p:last-child {
+      margin-bottom: 0;
+    }
+
+    .tip {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-left: 4px solid var(--accent-2);
+      background: rgba(180, 83, 9, 0.08);
+      border-radius: 0 14px 14px 0;
+    }
+
+    .status-good { color: var(--good); }
+    .status-warn { color: var(--warn); }
+
+    @media (max-width: 700px) {
+      .hero {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="hero">
+      <h1>AIMLCZG557 Visual Lab</h1>
+      <p>
+        Offline revision lab for the most visualization-heavy mid-sem topics: A* scoring, hill-climbing moves, and minimax with alpha-beta pruning.
+        Predict the answer before pressing run, then compare your reasoning with the intermediate calculations.
+      </p>
+    </section>
+
+    <div class="grid">
+      <div class="card metric">
+        <strong>Best uses</strong>
+        A* numericals, heuristic intuition, local-search step tracing, and adversarial-search value propagation.
+      </div>
+      <div class="card metric">
+        <strong>Study rule</strong>
+        Say your expected next move out loud before you calculate it.
+      </div>
+      <div class="card metric">
+        <strong>Mid-sem fit</strong>
+        Built around the local search, A*, PEAS-style reasoning, and game-playing topics confirmed in `CS1-CS8`.
+      </div>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="Visual lab sections">
+      <button class="tab active" data-panel="astar-panel">A* Scoring</button>
+      <button class="tab" data-panel="hill-panel">Hill Climbing</button>
+      <button class="tab" data-panel="minimax-panel">Minimax + Alpha-Beta</button>
+    </div>
+
+    <section id="astar-panel" class="panel active card">
+      <h2>A* Scoring Lab</h2>
+      <p>Use the same structure as the sample-question deck: compute <code>g(n)</code>, <code>h(n)</code>, and <code>f(n)=g(n)+h(n)</code> for candidate children.</p>
+
+      <div class="controls">
+        <label>Current path cost <code>g(parent)</code>
+          <input id="astar-parent-g" type="number" value="2" min="0" step="1">
+        </label>
+        <label>Move cost to child
+          <input id="astar-move-cost" type="number" value="1" step="1">
+        </label>
+        <label>Manhattan distance to goal
+          <input id="astar-manhattan" type="number" value="5" min="0" step="1">
+        </label>
+        <label>Adjacent waterlogged cells
+          <input id="astar-water" type="number" value="2" min="0" step="1">
+        </label>
+        <label>Extra heuristic penalty
+          <input id="astar-extra" type="number" value="0" step="1">
+        </label>
+      </div>
+
+      <div class="controls">
+        <button id="astar-run" class="action">Calculate Node Score</button>
+        <button id="astar-random" class="subtle">Randomize Values</button>
+      </div>
+
+      <div class="tip">
+        <p><strong>Predict first:</strong> decide whether the child looks promising before you compute <code>f(n)</code>.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Quantity</th>
+              <th>Meaning</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody id="astar-table-body"></tbody>
+        </table>
+      </div>
+
+      <div class="output">
+        <p id="astar-summary"></p>
+      </div>
+
+      <div class="recall">
+        <p><strong>Rapid recall:</strong> If two nodes have the same <code>f(n)</code>, what extra information would you inspect before choosing one?</p>
+      </div>
+    </section>
+
+    <section id="hill-panel" class="panel card">
+      <h2>Hill-Climbing Move Lab</h2>
+      <p>Start from a current state and compare its neighbors using an evaluation function. This is the local-search mindset: the path does not matter, only the current state and its nearby improvements.</p>
+
+      <div class="controls">
+        <label>Current state value
+          <input id="hill-current" type="number" value="11" step="1">
+        </label>
+        <label>Neighbor A
+          <input id="hill-a" type="number" value="9" step="1">
+        </label>
+        <label>Neighbor B
+          <input id="hill-b" type="number" value="7" step="1">
+        </label>
+        <label>Neighbor C
+          <input id="hill-c" type="number" value="12" step="1">
+        </label>
+        <label>Optimization mode
+          <select id="hill-mode">
+            <option value="min">Minimize</option>
+            <option value="max">Maximize</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="controls">
+        <button id="hill-run" class="action">Evaluate Neighbors</button>
+        <button id="hill-reset" class="subtle">Load Plateau Case</button>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>State</th>
+              <th>Score</th>
+              <th>Interpretation</th>
+            </tr>
+          </thead>
+          <tbody id="hill-table-body"></tbody>
+        </table>
+      </div>
+
+      <div class="output">
+        <p id="hill-summary"></p>
+      </div>
+
+      <div class="recall">
+        <p><strong>Rapid recall:</strong> If every neighbor is worse, is the current state guaranteed to be globally optimal? Why not?</p>
+      </div>
+    </section>
+
+    <section id="minimax-panel" class="panel card">
+      <h2>Minimax + Alpha-Beta Lab</h2>
+      <p>Enter eight terminal utilities for a depth-3 binary game tree. The lab evaluates the tree left-to-right and shows which leaves get pruned by alpha-beta.</p>
+
+      <div class="controls">
+        <label>L1
+          <input class="leaf" type="number" value="3" step="1">
+        </label>
+        <label>L2
+          <input class="leaf" type="number" value="5" step="1">
+        </label>
+        <label>L3
+          <input class="leaf" type="number" value="6" step="1">
+        </label>
+        <label>L4
+          <input class="leaf" type="number" value="9" step="1">
+        </label>
+        <label>L5
+          <input class="leaf" type="number" value="1" step="1">
+        </label>
+        <label>L6
+          <input class="leaf" type="number" value="2" step="1">
+        </label>
+        <label>L7
+          <input class="leaf" type="number" value="0" step="1">
+        </label>
+        <label>L8
+          <input class="leaf" type="number" value="-1" step="1">
+        </label>
+      </div>
+
+      <div class="controls">
+        <button id="minimax-run" class="action">Run Minimax</button>
+        <button id="minimax-prune-demo" class="subtle">Load Strong Pruning Case</button>
+      </div>
+
+      <div class="tree" id="minimax-tree"></div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Step</th>
+              <th>Visited node</th>
+              <th>Alpha</th>
+              <th>Beta</th>
+              <th>Reason</th>
+            </tr>
+          </thead>
+          <tbody id="minimax-log"></tbody>
+        </table>
+      </div>
+
+      <div class="output">
+        <p id="minimax-summary"></p>
+      </div>
+
+      <div class="recall">
+        <p><strong>Rapid recall:</strong> At a MIN node, what kind of child value makes pruning more likely on the remaining siblings?</p>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const tabButtons = document.querySelectorAll(".tab");
+    const panels = document.querySelectorAll(".panel");
+
+    tabButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        tabButtons.forEach((b) => b.classList.remove("active"));
+        panels.forEach((p) => p.classList.remove("active"));
+        button.classList.add("active");
+        document.getElementById(button.dataset.panel).classList.add("active");
+      });
+    });
+
+    function setAStar() {
+      const parentG = Number(document.getElementById("astar-parent-g").value);
+      const moveCost = Number(document.getElementById("astar-move-cost").value);
+      const manhattan = Number(document.getElementById("astar-manhattan").value);
+      const water = Number(document.getElementById("astar-water").value);
+      const extra = Number(document.getElementById("astar-extra").value);
+
+      const childG = parentG + moveCost;
+      const h = manhattan + water + extra;
+      const f = childG + h;
+
+      const rows = [
+        ["g(parent)", "Cost already spent before this move", parentG],
+        ["move cost", "Cost of taking the current edge", moveCost],
+        ["g(child)", "Exact path cost to the child", childG],
+        ["Manhattan term", "Distance-style estimate to the goal", manhattan],
+        ["Water term", "Penalty from nearby difficult cells", water],
+        ["Extra term", "Any additional heuristic choice", extra],
+        ["h(child)", "Estimated remaining cost", h],
+        ["f(child)", "A* evaluation = g + h", f]
+      ];
+
+      document.getElementById("astar-table-body").innerHTML = rows
+        .map((row) => `<tr><td><code>${row[0]}</code></td><td>${row[1]}</td><td>${row[2]}</td></tr>`)
+        .join("");
+
+      const quality = f <= 8 ? "strong" : f <= 12 ? "moderate" : "weak";
+      document.getElementById("astar-summary").innerHTML =
+        `This child has <code>g=${childG}</code>, <code>h=${h}</code>, and <code>f=${f}</code>. Based on the current numbers, it looks like a <strong>${quality}</strong> candidate compared with typical nearby nodes.`;
+    }
+
+    function randomizeAStar() {
+      const picks = [
+        ["astar-parent-g", Math.floor(Math.random() * 6)],
+        ["astar-move-cost", 1 + Math.floor(Math.random() * 3)],
+        ["astar-manhattan", 2 + Math.floor(Math.random() * 7)],
+        ["astar-water", Math.floor(Math.random() * 4)],
+        ["astar-extra", Math.floor(Math.random() * 3)]
+      ];
+      picks.forEach(([id, value]) => {
+        document.getElementById(id).value = value;
+      });
+      setAStar();
+    }
+
+    function evaluateHill() {
+      const current = Number(document.getElementById("hill-current").value);
+      const neighbors = [
+        { name: "Neighbor A", value: Number(document.getElementById("hill-a").value) },
+        { name: "Neighbor B", value: Number(document.getElementById("hill-b").value) },
+        { name: "Neighbor C", value: Number(document.getElementById("hill-c").value) }
+      ];
+      const mode = document.getElementById("hill-mode").value;
+      const better = (candidate, baseline) => mode === "min" ? candidate < baseline : candidate > baseline;
+      const best = neighbors.reduce((acc, item) => better(item.value, acc.value) ? item : acc, neighbors[0]);
+      const currentBetterThanAll = neighbors.every((item) => !better(item.value, current));
+
+      const rows = [
+        { name: "Current", value: current, note: currentBetterThanAll ? "No better immediate move found" : "Can still improve" },
+        ...neighbors.map((item) => ({
+          name: item.name,
+          value: item.value,
+          note: better(item.value, current) ? "Better than current" : item.value === current ? "Plateau relative to current" : "Worse than current"
+        }))
+      ];
+
+      document.getElementById("hill-table-body").innerHTML = rows
+        .map((row) => `<tr><td>${row.name}</td><td>${row.value}</td><td>${row.note}</td></tr>`)
+        .join("");
+
+      let summary = "";
+      if (currentBetterThanAll) {
+        summary = `Hill climbing would stop here because every shown neighbor is not better than the current state. That means you may be at a local optimum or a plateau, not necessarily the global best.`;
+      } else {
+        summary = `Hill climbing would move to <strong>${best.name}</strong> because its score <code>${best.value}</code> is the best immediate improvement in <strong>${mode === "min" ? "minimization" : "maximization"}</strong> mode.`;
+      }
+      document.getElementById("hill-summary").innerHTML = summary;
+    }
+
+    function loadPlateauCase() {
+      document.getElementById("hill-current").value = 4;
+      document.getElementById("hill-a").value = 4;
+      document.getElementById("hill-b").value = 5;
+      document.getElementById("hill-c").value = 4;
+      document.getElementById("hill-mode").value = "min";
+      evaluateHill();
+    }
+
+    function renderTree(leaves, prunedNames, internalValues) {
+      const tree = document.getElementById("minimax-tree");
+      const level0 = [{ name: "Root MAX", value: internalValues.root }];
+      const level1 = [
+        { name: "A MIN", value: internalValues.a },
+        { name: "B MIN", value: internalValues.b }
+      ];
+      const level2 = [
+        { name: "A1 MAX", value: internalValues.a1 },
+        { name: "A2 MAX", value: internalValues.a2 },
+        { name: "B1 MAX", value: internalValues.b1 },
+        { name: "B2 MAX", value: internalValues.b2 }
+      ];
+      const level3 = leaves.map((value, index) => ({
+        name: `L${index + 1}`,
+        value
+      }));
+      const levels = [level0, level1, level2, level3];
+      tree.innerHTML = levels.map((level) => `
+        <div class="tree-level">
+          ${level.map((node) => `
+            <div class="node ${prunedNames.has(node.name) ? "pruned" : ""}">
+              <strong>${node.name}</strong><br>
+              value: ${node.value}
+            </div>
+          `).join("")}
+        </div>
+      `).join("");
+    }
+
+    function runMinimax(leaves) {
+      const log = [];
+      const pruned = new Set();
+
+      function alphaBeta(depth, index, maximizing, alpha, beta, pathName) {
+        if (depth === 3) {
+          log.push({ node: `L${index + 1}`, alpha, beta, reason: `Terminal utility = ${leaves[index]}` });
+          return leaves[index];
+        }
+
+        if (maximizing) {
+          let value = -Infinity;
+          for (let child = 0; child < 2; child++) {
+            const childIndex = index * 2 + child;
+            const childValue = alphaBeta(depth + 1, childIndex, false, alpha, beta, pathName);
+            value = Math.max(value, childValue);
+            alpha = Math.max(alpha, value);
+            log.push({ node: `${pathName} MAX`, alpha, beta, reason: `Updated MAX after child ${child + 1}` });
+            if (alpha >= beta) {
+              const skipped = child === 0 ? collectLeaves(depth + 1, childIndex + 1) : [];
+              skipped.forEach((name) => pruned.add(name));
+              log.push({ node: `${pathName} MAX`, alpha, beta, reason: `Prune because alpha >= beta` });
+              break;
+            }
+          }
+          return value;
+        }
+
+        let value = Infinity;
+        for (let child = 0; child < 2; child++) {
+          const childIndex = index * 2 + child;
+          const childPath = nextPathName(pathName, child);
+          const childValue = alphaBeta(depth + 1, childIndex, true, alpha, beta, childPath);
+          value = Math.min(value, childValue);
+          beta = Math.min(beta, value);
+          log.push({ node: `${pathName} MIN`, alpha, beta, reason: `Updated MIN after child ${child + 1}` });
+          if (alpha >= beta) {
+            const skipped = child === 0 ? collectLeaves(depth + 1, childIndex + 1) : [];
+            skipped.forEach((name) => pruned.add(name));
+            log.push({ node: `${pathName} MIN`, alpha, beta, reason: `Prune because alpha >= beta` });
+            break;
+          }
+        }
+        return value;
+      }
+
+      function nextPathName(pathName, child) {
+        if (pathName === "A") return child === 0 ? "A1" : "A2";
+        if (pathName === "B") return child === 0 ? "B1" : "B2";
+        return pathName;
+      }
+
+      function collectLeaves(depth, index) {
+        if (depth === 3) return [`L${index + 1}`];
+        const left = collectLeaves(depth + 1, index * 2);
+        const right = collectLeaves(depth + 1, index * 2 + 1);
+        return [...left, ...right];
+      }
+
+      const a = alphaBeta(1, 0, true, -Infinity, Infinity, "A");
+      let rootAlpha = a;
+      const b = alphaBeta(1, 1, true, rootAlpha, Infinity, "B");
+      const rootValue = Math.max(a, b);
+
+      const internalValues = {
+        a1: Math.max(leaves[0], leaves[1]),
+        a2: Math.max(leaves[2], leaves[3]),
+        b1: Math.max(leaves[4], leaves[5]),
+        b2: Math.max(leaves[6], leaves[7]),
+        a: Math.min(Math.max(leaves[0], leaves[1]), Math.max(leaves[2], leaves[3])),
+        b: Math.min(Math.max(leaves[4], leaves[5]), Math.max(leaves[6], leaves[7])),
+        root: rootValue
+      };
+
+      renderTree(leaves, pruned, internalValues);
+      document.getElementById("minimax-log").innerHTML = log.map((entry, index) => `
+        <tr>
+          <td>${index + 1}</td>
+          <td>${entry.node}</td>
+          <td>${formatBound(entry.alpha)}</td>
+          <td>${formatBound(entry.beta)}</td>
+          <td>${entry.reason}</td>
+        </tr>
+      `).join("");
+      document.getElementById("minimax-summary").innerHTML =
+        `The root MAX value is <strong>${rootValue}</strong>. Pruned leaves: <strong>${[...pruned].join(", ") || "none"}</strong>.`;
+    }
+
+    function formatBound(value) {
+      if (value === Infinity) return "+inf";
+      if (value === -Infinity) return "-inf";
+      return value;
+    }
+
+    function runMinimaxFromInputs() {
+      const leaves = [...document.querySelectorAll(".leaf")].map((input) => Number(input.value));
+      runMinimax(leaves);
+    }
+
+    function loadPruneDemo() {
+      const values = [8, 7, 6, 5, 2, 1, 0, -1];
+      document.querySelectorAll(".leaf").forEach((input, index) => {
+        input.value = values[index];
+      });
+      runMinimax(values);
+    }
+
+    document.getElementById("astar-run").addEventListener("click", setAStar);
+    document.getElementById("astar-random").addEventListener("click", randomizeAStar);
+    document.getElementById("hill-run").addEventListener("click", evaluateHill);
+    document.getElementById("hill-reset").addEventListener("click", loadPlateauCase);
+    document.getElementById("minimax-run").addEventListener("click", runMinimaxFromInputs);
+    document.getElementById("minimax-prune-demo").addEventListener("click", loadPruneDemo);
+
+    setAStar();
+    evaluateHill();
+    runMinimaxFromInputs();
+  </script>
+</body>
+</html>

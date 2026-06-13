@@ -1,0 +1,31 @@
+# OS and editor noise
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Local environments and credentials
+.env
+.env.*
+.python-version
+.venv/
+venv/
+env/
+node_modules/
+__pycache__/
+
+# Instructor-provided and local-only course assets
+Files (Common Resources)-20260613/
+OneDrive_3_13-06-2026/
+OneDrive_4_13-06-2026/
+Assign1_PS7.pdf
+
+# Local source sample papers remain untracked by default
+sample-papers/source/*
+!sample-papers/source/README.md
+
+# Common large or copyrighted source formats
+*.mp4
+*.pptx
+*.ipynb

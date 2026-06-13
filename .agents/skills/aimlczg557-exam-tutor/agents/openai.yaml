@@ -1,0 +1,4 @@
+interface:
+  display_name: "AIMLCZG557 Exam Tutor"
+  short_description: "Tutor ACI mid-sem step by step"
+  default_prompt: "Use $aimlczg557-exam-tutor to continue my AIMLCZG557 mid-sem preparation."
