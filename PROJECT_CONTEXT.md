@@ -90,12 +90,13 @@
 ## Current Project State
 
 - Workspace inspected and classified
+- Persisted inventory added for future reuse
 - Exam scope confirmed from handout and lecture deck
 - Study plan generated
 - Shared chat context initialized
 - Repo-local tutoring skill created and validated with the official validator
-- Visual lab built and browser-checked on local localhost serving
-- Git repository initialized on branch `main`
+- Visual lab built and checked for offline serving
+- Existing GitHub repository verified and reused on branch `main`
 
 ## GitHub Repository Information
 

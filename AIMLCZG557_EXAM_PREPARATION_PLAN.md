@@ -198,6 +198,8 @@
 
 ## 2-Day Detailed Timetable
 
+This timetable is meant for the final two focused prep days immediately before the exam on 21 June 2026.
+
 ## Day 1: 19 June 2026
 
 - `07:00-07:30` Wake up, water, no-phone setup, print or open formula sheet
