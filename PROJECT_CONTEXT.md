@@ -11,16 +11,18 @@
 - Name: Artificial and Computational Intelligence
 - Course code used in this repo: `AIMLCZG557`
 - Exam: MID-SEM
-- Exam date: 21 June 2026
+- Exam date: 28 June 2026, 01:00 PM
 - Marks pattern confirmed locally:
   - EC1 continuous assessment: 30 marks
   - EC2 mid-sem: 30 marks
   - EC3 comprehensive exam: 40 marks
+- Mid-sem format reconfirmed in the June 14 CS8 recording: subjective, two
+  hours, online at the exam centre.
 
 ## Confirmed Syllabus For This Exam
 
 - Mid-sem covers `CS1` to `CS8` according to `CS1.pdf`.
-- Confirmed scope from the handout:
+- Confirmed scope from the handout and the June 14 CS8 recording:
   - Introduction to AI
   - Intelligent agents, environments, rationality, PEAS
   - Problem formulation
@@ -31,6 +33,7 @@
   - Ant Colony Optimization
   - Neural Architecture Search and neuro-evolution
   - Adversarial search, static evaluation, minimax
+  - Alpha-beta pruning
   - Monte Carlo Tree Search
   - Stochastic games
 
@@ -40,10 +43,13 @@
 
 - Mid-sem includes only `CS1-CS8`.
 - Search, PEAS, and environment classification are definitely practiced in local course material.
+- The June 14 CS8 recording directly confirms static-evaluation recap,
+  alpha-beta pruning, Monte Carlo tree search, and the exam format.
 
 ### Inferred
 
-- Because `CS8` slides are missing in the local folder, detailed emphasis inside `CS8` is inferred from the handout.
+- Because `CS8` slides are missing, stochastic-game detail is still inferred
+  from the handout. Alpha-beta and MCTS emphasis no longer relies on inference.
 - Search numericals are treated as top priority because both the assignment and sample-question deck emphasize them.
 
 ## Preparation Time
@@ -66,8 +72,9 @@
 3. CS4 heuristics
 4. CS5 local search
 5. CS7 game playing basics
-6. CS8 MCTS and stochastic games
+6. CS8 alpha-beta and MCTS
 7. CS6 NAS and supporting theory
+8. Stochastic games overview
 
 ## Existing Assets
 
@@ -94,6 +101,7 @@
 - Exam scope confirmed from handout and lecture deck
 - Study plan generated
 - Shared chat context initialized
+- CS8 recording inspected and incorporated into topic priorities
 - Repo-local tutoring skill created and validated with the official validator
 - Visual lab built and checked for offline serving
 - Existing GitHub repository verified and reused on branch `main`

@@ -40,10 +40,13 @@ These strongly influence topic priority because they show likely question styles
 
 ### Recordings
 
-- `OneDrive_3_13-06-2026/Recordings/`
-- `OneDrive_4_13-06-2026/`
+- `course-assets/recordings/Prof D Sudheerkumar Reddy/`
+- `course-assets/recordings/Prof Parthasarathy P D/`
 
-These are local-only and should be used only for targeted clarification when slides or handouts are insufficient.
+These contain 15 local-only lecture recordings. The June 14 CS08 recording
+directly covers static evaluation, alpha-beta pruning, Monte Carlo tree search,
+and exam details. Use recordings only for targeted clarification or worked
+examples.
 
 ### Additional reference material
 
@@ -63,7 +66,9 @@ These are supporting references, not primary scope-defining sources for the mid-
 
 - Syllabus and exam boundary: confirmed from handout plus `CS1.pdf`
 - Search numericals and PEAS/environment questions: confirmed as high-value from assignment and sample-question material
-- `CS8` topic detail: inferred from handout because a local `CS8` slide deck is not present
+- `CS8` alpha-beta and MCTS emphasis: confirmed from the June 14 recording
+- `CS8` stochastic-games detail: still inferred from the handout because a
+  local slide deck is not present
 
 ## Tracked prep workspace
 

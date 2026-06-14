@@ -5,7 +5,8 @@
 - Subject: Artificial and Computational Intelligence
 - Course code used in this repo: `AIMLCZG557`
 - Exam type: MID-SEM
-- Exam date: 21 June 2026
+- Exam date: 28 June 2026, 01:00 PM
+- Format: subjective, 2 hours, 30 marks, online at the exam centre
 - Available prep time: 2 days
 - Learner profile: beginner, wants slow and detailed teaching with derivations, visuals, numericals, and worked examples
 - Mid-sem marks: 30
@@ -18,6 +19,7 @@
 - `OneDrive_3_13-06-2026/Class Materials/AIMLZG557_ACI_HO.pdf`
 - `Files (Common Resources)-20260613/Lecture Slides/CS1.pdf`
 - `Files (Common Resources)-20260613/EC1 Dates.pdf`
+- `course-assets/recordings/Prof Parthasarathy P D/2026-06-14 - CS08 - Alpha-Beta Pruning and Monte Carlo Tree Search.mp4`
 
 ### Confirmed exam boundary
 
@@ -30,7 +32,9 @@
   - `CS5`: hill climbing, local beam search, online search agents, genetic algorithm, intro to ACO
   - `CS6`: ACO and neural architecture search
   - `CS7`: NAS continuation and introduction to game playing, static evaluation, minimax
-  - `CS8`: Monte Carlo tree search and stochastic games
+  - `CS8`: the handout lists Monte Carlo tree search and stochastic games; the
+    June 14 lecture directly covers static-evaluation recap, alpha-beta
+    pruning, and Monte Carlo tree search
 
 ### Exam-style evidence from local practice material
 
@@ -41,7 +45,10 @@
 
 ## Important Inferences
 
-- `CS8` slide PDF is not present in this folder, so detailed `CS8` subtopic emphasis is inferred from the handout, not from a local slide deck.
+- `CS8` slide PDF is not present, but the June 14 recording now directly
+  confirms substantial alpha-beta and MCTS teaching. Stochastic games remain
+  in scope from the handout, but their detailed emphasis is still not locally
+  demonstrated.
 - Because both the assignment and sample-question deck are search-heavy, search numericals are likely high value for the mid-sem. This is a reasoned priority judgment, not a guaranteed marks split.
 - NAS is in scope because `CS6` and `CS7` cover it, but for a 2-day beginner sprint it should be studied as a theory-first topic unless a new paper suggests otherwise.
 
@@ -51,7 +58,8 @@
 
 - Handouts: `ACI_HO.pdf`, `AIMLZG557_ACI_HO.pdf`
 - Lecture slides: `CS1.pdf` to `CS7.pdf`, `C1_AIMLCZG557.pdf` to `C7_AIMLCZG557.pdf`
-- Recordings: 14 lecture recordings across two instructor folders
+- Recordings: 15 lecture recordings across two instructor folders, including
+  the new CS08 lecture
 
 ### Practical and exam-support material
 
@@ -84,10 +92,10 @@
 
 ### Tier 2: learn well, but after Tier 1
 
-8. Genetic algorithms
-9. Ant Colony Optimization
-10. Online search agents
-11. Monte Carlo tree search
+8. Monte Carlo tree search
+9. Genetic algorithms
+10. Ant Colony Optimization
+11. Online search agents
 12. Stochastic games
 
 ### Tier 3: theory-only if time gets tight
@@ -139,18 +147,21 @@
   - describe GA cycle: representation -> fitness -> selection -> crossover -> mutation
   - explain ACO transition and pheromone update at a high level
 
-### Block 5: Game playing
+### Block 5: Game playing and tree search
 
-- Concepts: adversarial search, utility, MAX/MIN, game tree, minimax, alpha-beta pruning, static evaluation
+- Concepts: adversarial search, utility, MAX/MIN, game tree, minimax,
+  alpha-beta pruning, static evaluation, MCTS selection/expansion/simulation/
+  backpropagation
 - Must be able to do:
   - build a game tree
   - propagate utility values bottom-up
   - identify pruned branches
   - explain why minimax assumes optimal opponent play
+  - trace one MCTS iteration and interpret visit/win counts
 
 ### Block 6: Finish-theory topics
 
-- Concepts: MCTS, stochastic games, NAS, CoDeepNEAT
+- Concepts: stochastic games, NAS, CoDeepNEAT
 - Must be able to do:
   - give intuition and pipeline
   - write short exam answers with one example
@@ -195,12 +206,15 @@
   - `alpha = best guaranteed score for MAX so far`
   - `beta = best guaranteed score for MIN so far`
 - Prune when `alpha >= beta`
+- MCTS: selection -> expansion -> simulation -> backpropagation; know the
+  exploration/exploitation role of UCB-style selection even if no long
+  arithmetic question is asked
 
 ## 2-Day Detailed Timetable
 
-This timetable is meant for the final two focused prep days immediately before the exam on 21 June 2026.
+This timetable is meant for the final two focused prep days immediately before the exam on 28 June 2026 at 01:00 PM.
 
-## Day 1: 19 June 2026
+## Day 1: 26 June 2026
 
 - `07:00-07:30` Wake up, water, no-phone setup, print or open formula sheet
 - `07:30-09:15` CS1-CS2
@@ -249,7 +263,7 @@ This timetable is meant for the final two focused prep days immediately before t
   - oral recap of Day 1 concepts
 - `23:00-07:00` Sleep
 
-## Day 2: 20 June 2026
+## Day 2: 27 June 2026
 
 - `07:00-07:20` Wake up and recall Day 1 from memory
 - `07:20-09:20` CS5 advanced + CS6
@@ -265,6 +279,7 @@ This timetable is meant for the final two focused prep days immediately before t
   - alpha-beta pruning
   - MCTS and stochastic games overview
   - solve 2 minimax trees and mark pruned branches
+  - trace one complete MCTS selection-to-backpropagation iteration
 - `12:10-13:00` Lunch
 - `13:00-14:15` Formula sheet pass 2
   - finalize one-page fast-revision list
@@ -276,7 +291,7 @@ This timetable is meant for the final two focused prep days immediately before t
     - 1 A* numerical
     - 1 heuristics theory question
     - 1 hill climbing / GA / ACO question
-    - 1 minimax / alpha-beta question
+    - 1 minimax / alpha-beta question with an MCTS subpart
 - `16:15-16:45` Break
 - `16:45-18:15` Error-repair session
   - re-solve every mock mistake without notes
@@ -295,13 +310,13 @@ This timetable is meant for the final two focused prep days immediately before t
   - alpha-beta rule
 - `22:00-06:30` Sleep
 
-## Exam Morning: 21 June 2026
+## Exam Day: 28 June 2026
 
-- `06:30-07:00` Wake and hydrate
-- `07:00-08:00` Formula sheet only
-- `08:00-08:30` One A* micro-problem and one minimax micro-problem
-- `08:30-09:00` PEAS + environment definitions
-- `09:00 onwards` Stop learning new material
+- `08:30-09:00` Wake and hydrate
+- `09:00-10:00` Formula sheet only
+- `10:00-10:30` One A* micro-problem and one minimax micro-problem
+- `10:30-11:00` PEAS + environment definitions
+- `11:00 onwards` Stop learning new material before the 01:00 PM exam
 
 ## Practical Example Activities
 
@@ -357,6 +372,9 @@ This timetable is meant for the final two focused prep days immediately before t
 - Minimax:
   - solve a tree cleanly
   - mark at least one alpha cut and one beta cut correctly
+- MCTS:
+  - trace selection, expansion, simulation, and backpropagation
+  - explain the exploration-versus-exploitation choice
 
 ## Timed Mock Rules
 
@@ -390,8 +408,8 @@ This timetable is meant for the final two focused prep days immediately before t
 
 For full-marks preparation under a 2-day constraint, spend about:
 
-- `40%` on search and heuristics
+- `35%` on search and heuristics
 - `20%` on PEAS, environments, and problem formulation
-- `20%` on local search, GA, and ACO
-- `15%` on minimax and alpha-beta
-- `5%` on NAS, MCTS, and stochastic games
+- `15%` on local search, GA, and ACO
+- `25%` on minimax, alpha-beta, and MCTS
+- `5%` on NAS and stochastic games
