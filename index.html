@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ACI Mid-Sem Preparation</title>
+  <meta name="description" content="Interactive study hub for Artificial and Computational Intelligence mid-semester preparation.">
+  <style>
+    :root {
+      --bg: #0b1420;
+      --bg-soft: #13253b;
+      --card: rgba(10, 24, 40, 0.9);
+      --line: rgba(156, 196, 255, 0.16);
+      --text: #eff5fb;
+      --muted: #b3c4d7;
+      --accent: #7ae3c3;
+      --accent-soft: #8bbcff;
+      --warn: #ffd07f;
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(122, 227, 195, 0.16), transparent 22rem),
+        radial-gradient(circle at top right, rgba(139, 188, 255, 0.12), transparent 24rem),
+        linear-gradient(180deg, var(--bg), var(--bg-soft));
+      font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .shell {
+      width: min(1100px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 2rem 0 3rem;
+    }
+
+    .hero,
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero {
+      padding: clamp(1.5rem, 4vw, 3rem);
+    }
+
+    .eyebrow {
+      margin: 0 0 0.6rem;
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 12ch;
+      margin-bottom: 1rem;
+      font-size: clamp(2.7rem, 8vw, 5.2rem);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+    }
+
+    .lead {
+      max-width: 62ch;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: 1.5rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 3rem;
+      padding: 0.8rem 1.2rem;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform 150ms ease, background 150ms ease, border-color 150ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .button.primary {
+      color: #0c231d;
+      background: var(--accent);
+    }
+
+    .button.secondary {
+      border-color: var(--line);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .card {
+      padding: 1.3rem;
+    }
+
+    .span-7 { grid-column: span 7; }
+    .span-5 { grid-column: span 5; }
+    .span-4 { grid-column: span 4; }
+
+    ul {
+      margin: 0;
+      padding-left: 1.2rem;
+      color: var(--muted);
+    }
+
+    li + li {
+      margin-top: 0.5rem;
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .meta-row:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .meta-row span {
+      color: var(--muted);
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .flag {
+      color: var(--warn);
+      font-weight: 600;
+    }
+
+    @media (max-width: 820px) {
+      .span-7,
+      .span-5,
+      .span-4 {
+        grid-column: span 12;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <p class="eyebrow">Artificial and Computational Intelligence</p>
+      <h1>Mid-Sem Prep Hub</h1>
+      <p class="lead">
+        This GitHub Pages site publishes the ACI study project as a lightweight static hub.
+        Use it to jump into the interactive visual lab, revision notes, practice work, and the current exam plan.
+      </p>
+      <div class="actions">
+        <a class="button primary" href="./AIMLCZG557_VISUAL_LAB.html">Open Visual Lab</a>
+        <a class="button secondary" href="https://github.com/its-abhinav-mandloi/AIMLCZG557-Exam-Preparation">Open Repository</a>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card span-7">
+        <h2>Included Scope</h2>
+        <ul>
+          <li>Interactive revision through the visual lab</li>
+          <li>Preparation plan, notes, and tracked study progress</li>
+          <li>Practice artifacts, numericals, quizzes, and mock work</li>
+          <li>Sample-paper analysis and reusable tutoring context</li>
+        </ul>
+      </article>
+
+      <article class="card span-5">
+        <h2>Quick Access</h2>
+        <div class="meta-row">
+          <strong>Visual lab</strong>
+          <span>`AIMLCZG557_VISUAL_LAB.html`</span>
+        </div>
+        <div class="meta-row">
+          <strong>Study plan</strong>
+          <span>`AIMLCZG557_EXAM_PREPARATION_PLAN.md`</span>
+        </div>
+        <div class="meta-row">
+          <strong>Progress</strong>
+          <span>`STUDY_PROGRESS.md`</span>
+        </div>
+      </article>
+
+      <article class="card span-4">
+        <h2>Repository Areas</h2>
+        <ul>
+          <li>`notes/`</li>
+          <li>`practice/`</li>
+          <li>`sample-papers/`</li>
+        </ul>
+      </article>
+
+      <article class="card span-4">
+        <h2>Publishing</h2>
+        <p class="note">
+          The repo is set up for GitHub Pages deployment through a GitHub Actions workflow.
+        </p>
+      </article>
+
+      <article class="card span-4">
+        <h2>Privacy Reminder</h2>
+        <p class="note">
+          <span class="flag">Private repo, public site:</span> GitHub Pages can still publish a public site
+          while the repository itself stays private, subject to your GitHub plan.
+        </p>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
