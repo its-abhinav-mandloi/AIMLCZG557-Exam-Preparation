@@ -10,8 +10,12 @@
 
 ## Current Lesson
 
+- Current sprint placement: ACI main sprint from June 25 to June 26, followed by
+  June 27 evening repair after the SEML exam.
 - Current lesson: `CS1-CS2 foundations -> rational agents, PEAS, and environment dimensions`
-- Next action: complete a 5-question prerequisite diagnostic, then do one PEAS example and one environment-classification example closed-book
+- Next action: begin with PEAS, environment dimensions, problem formulation,
+  and A* using `../DAILY_SPRINT_CHECKLIST.md`; complete one PEAS example and
+  one search numerical closed book before moving to lower-priority topics.
 
 ## Topic Tracker
 
@@ -59,6 +63,7 @@
 | Date | Session focus | Outcome |
 | --- | --- | --- |
 | 2026-06-13 | Workspace inspection and project setup | Scope confirmed, study system initialized |
+| 2026-06-16 | Four-subject rescue sprint implemented | ACI scheduled for June 25-26 main sprint and June 27 repair; no mastery statuses changed |
 
 ## Mistakes To Revisit
 

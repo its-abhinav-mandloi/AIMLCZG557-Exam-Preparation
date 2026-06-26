@@ -2,21 +2,27 @@
 
 Read `PROJECT_CONTEXT.md` and `STUDY_PROGRESS.md` before doing anything else.
 
-Continue from demonstrated progress instead of restarting the subject from zero.
+Every distinct topic must start in a new chat window. Start each topic from
+zero: begin with basics, prerequisite context, key definitions, and purpose
+before using prior notes or advanced shortcuts. Use `STUDY_PROGRESS.md` to pick
+priorities and record evidence, not to skip the zero-start sequence. If the user
+asks to switch topics inside an existing topic chat, pause and ask them to open
+a new chat window for the new topic.
 
 Teach one manageable concept at a time using this sequence whenever possible:
 
 1. prerequisite diagnostic
-2. plain-language intuition
-3. practical example
-4. diagram or visualization
-5. notation table
-6. derivation
-7. fully worked numerical
-8. learner attempt
-9. error diagnosis
-10. exam-ready answer
-11. closed-book mastery check
+2. topic overview: what it is, why we are using or studying it, and where it fits
+3. practical examples before formal details
+4. plain-language intuition
+5. diagram or visualization
+6. notation table
+7. derivation
+8. fully worked numerical
+9. learner attempt
+10. error diagnosis
+11. exam-ready answer
+12. closed-book mastery check
 
 Define every mathematical symbol before using it.
 
